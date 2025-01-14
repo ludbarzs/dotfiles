@@ -1,0 +1,59 @@
+# Alacritty Configuration File
+# ----------------------------
+
+# Window Settings
+[window]
+title = "Alacritty Terminal"
+dynamic_title = true
+decorations = "none"          # Options: full, none, transparent, buttonless
+opacity = 0.8                # Transparency (1.0 is fully opaque)
+padding = {x = 10, y = 10}
+
+# Font Settings
+[font]
+normal = { family = "Hack", style = "Regular" }
+bold = { family = "Hack", style = "Bold" }
+italic = { family = "Hack", style = "Italic" }
+size = 10                   # Font size in points
+
+# Color Scheme
+[colors]
+# Primary colors
+primary.background = "#1E1E2E" # Dark gray-blue background
+primary.foreground = "#D9E0EE" # Light gray foreground
+
+# Normal colors
+normal.black   = "#1E1E2E"
+normal.red     = "#F38BA8"
+normal.green   = "#A6E3A1"
+normal.yellow  = "#F9E2AF"
+normal.blue    = "#89B4FA"
+normal.magenta = "#F5C2E7"
+normal.cyan    = "#94E2D5"
+normal.white   = "#BAC2DE"
+
+# Bright colors
+bright.black   = "#585B70"
+bright.red     = "#F38BA8"
+bright.green   = "#A6E3A1"
+bright.yellow  = "#F9E2AF"
+bright.blue    = "#89B4FA"
+bright.magenta = "#F5C2E7"
+bright.cyan    = "#94E2D5"
+bright.white   = "#D9E0EE"
+
+# Cursor settings
+[cursor]
+style = "Block"                # Options: Block, Underline, Beam
+unfocused_hollow = true
+blink_interval = 500           # Blink interval in milliseconds
+
+# Scrolling
+[scrolling]
+history = 10000                # Lines to keep in the scrollback buffer
+multiplier = 3                 # Scroll speed multiplier
+
+# Other Features
+[mouse]
+hide_when_typing = true
+
