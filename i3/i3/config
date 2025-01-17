@@ -3,16 +3,11 @@
 set $mod Mod4
 
 # Font
-font pango:overpass 11 
+font pango:overpass 10
 
 # Borders
 default_border none
-
-# Hide the edge borders of windows
 hide_edge_borders both
-
-# Style for focused windows: thin white border
-client.focused  #ffffff #2E3440 #81A1C1 #81A1C1 #D8DEE9
 
 gaps inner 6
 gaps top -6
@@ -209,7 +204,4 @@ assign [class="spotify-launcher"] $ws10
 exec --no-startup-id i3-msg "workspace $ws1; exec firefox"
 exec --no-startup-id i3-msg "workspace $ws2; exec alacritty"
 exec --no-startup-id i3-msg "workspace $ws10; exec spotify-launcher"
-
-# Start Picom
-exec --no-startup-id picom --config ~/.config/picom/picom.conf
 

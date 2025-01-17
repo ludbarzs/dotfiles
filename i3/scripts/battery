@@ -1,0 +1,30 @@
+#!/bin/bash
+
+batteryStatus=$(acpi -b | awk '{print $3}' | tr -d ,)
+batteryPercent=$(acpi -b | awk '{print $4}' | cut -d % -f 1)
+
+getIconAndColor() {
+    if [ $1 -lt 20 ]; then
+        icon="  "
+    elif [ $1 -lt 40 ]; then
+        icon="  "
+    elif [ $1 -lt 60 ]; then
+        icon="  "
+    elif [ $1 -lt 80 ]; then
+        icon="  "
+    else
+        icon="  "
+    fi
+    color="#8aadf4"
+    printf "%s" "$icon$1% $color"
+}
+
+statusLabel=""
+[ "$batteryStatus" = "Charging" ] && statusLabel=" "
+[ "$batteryStatus" = "Discharging" ] && statusLabel=" "
+[ -z "$statusLabel" ] && statusLabel=" "
+
+output=$(getIconAndColor $batteryPercent)
+echo "$statusLabel ${output:0:-8}"
+echo ""
+echo "${output: -7}"

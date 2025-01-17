@@ -5,7 +5,7 @@ TERM = "xterm-256color"
 position = {x = 500, y = 250}
 dynamic_padding = true
 padding = {x = 20,y = 10}
-opacity = 0.8
+opacity = 0.95
 blur = true
 
 [font]
