@@ -11,9 +11,6 @@ default_border none
 # Hide the edge borders of windows
 hide_edge_borders both
 
-# Style for focused windows: thin white border
-client.focused  #ffffff #2E3440 #81A1C1 #81A1C1 #D8DEE9
-
 gaps inner 6
 gaps top -6
 # Bar
@@ -21,7 +18,7 @@ bar {
   status_command       i3blocks -c ~/.config/i3/scripts/i3blocks.conf
   colors {
    background          #24273a
-   focused_workspace   #24273a #91d7e3 #24273a
+   focused_workspace   #24273a #bfedf5 #24273a
    active_workspace    #24273a #7dc4e4 #24273a
    inactive_workspace  #24273a #7dc4e4 #24273a
    urgent_workspace    #24273a #ed8796 #BF616A
@@ -117,14 +114,14 @@ bindsym $mod+a focus parent
 
 # Workspaces
 set $ws1 "1 "
-set $ws2 "2 "
-set $ws3 "3"
+set $ws2 "2 "
+set $ws3 "3 "
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "9"
+set $ws9 "9 "
 set $ws10 "10 "
 
 # switch to workspace
@@ -196,18 +193,21 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Remap caps
-exec --no-startup-id setxkbmap -option caps:escape
+exec_always --no-startup-id setxkbmap -option caps:escape
 
 # Wallpaper
 exec_always feh --bg-scale /home/arg/Pictures/wallpaper_active.jpg
 
 # Assign Workspaces
 assign [class="Firefox"] $ws1
+assign [class="obsidian"] $ws9
 assign [class="spotify-launcher"] $ws10
 
 # Open Applications
 exec --no-startup-id i3-msg "workspace $ws1; exec firefox"
 exec --no-startup-id i3-msg "workspace $ws2; exec alacritty"
+exec --no-startup-id i3-msg "workspace $ws3; exec alacritty"
+exec --no-startup-id i3-msg "workspace $ws9; exec obsidian"
 exec --no-startup-id i3-msg "workspace $ws10; exec spotify-launcher"
 
 # Start Picom
