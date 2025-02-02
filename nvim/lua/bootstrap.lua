@@ -1,5 +1,3 @@
-require("options")
-require("keymaps")
 ---------------------
 ---Lazy Bootstrapping
 ---------------------
