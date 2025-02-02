@@ -8,6 +8,7 @@ echo "Installing packages..."
 sudo pacman -S alacritty --noconfirm
 sudo pacman -S neovim --noconfirm
 sudo pacman -S tmux --noconfirm
+sudo pacman -S picom --noconfirm
 
 USER_HOME=$(eval echo ~$SUDO_USER)
 DOTFILES_DIR="$USER_HOME/source-code/.dotfiles"
