@@ -3,7 +3,9 @@
 set $mod Mod4
 
 # Font
-font pango:overpass 11 
+# font pango:overpass 11 
+# font pango:JetBrains Mono 11
+font pango:JetBrainsMono Nerd Font
 
 # Borders
 default_border none
@@ -13,24 +15,40 @@ hide_edge_borders both
 
 gaps inner 6
 gaps top -6
+
+set $COLOR_BG "#1f2335"
+set $COLOR_FG "#c0caf5"
+set $COLOR_BLUE "#7aa2f7"
+set $COLOR_GREEN "#9ece6a"
+set $COLOR_PURPLE "#bb9af7"
+set $COLOR_ORANGE "#ff9e64"
+set $COLOR_RED "#f7768e"
+set $COLOR_YELLOW "#e0af68"
+set $COLOR_CYAN "#7dcfff"
+set $COLOR_COMMENT "#565f89"
+
 # Bar
 bar {
   status_command       i3blocks -c ~/.config/i3/scripts/i3blocks.conf
   colors {
-   background          #24273a
-   focused_workspace   #24273a #bfedf5 #24273a
-   active_workspace    #24273a #7dc4e4 #24273a
-   inactive_workspace  #24273a #7dc4e4 #24273a
-   urgent_workspace    #24273a #ed8796 #BF616A
-   binding_mode        #24273a #eed49f #BF616A
+    background          $COLOR_BG
+    focused_workspace   $COLOR_BG $COLOR_BLUE 
+    active_workspace    $COLOR_BG $COLOR_GREEN $COLOR_BG
+    inactive_workspace  $COLOR_BG $COLOR_COMMENT $COLOR_BG
+    urgent_workspace    $COLOR_BG $COLOR_CYAN $COLOR_BG
+    binding_mode        $COLOR_BG $COLOR_YELLOW $COLOR_BG
   }
 }
+# Load theme colors and bar
 
 workspace_auto_back_and_forth yes
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
+
+# Fixes dolphin remembering how to open file types
+exec --no-startup-id export XDG_MENU_PREFIX=arch-
 
 # Take a screenshot upon pressing $mod+x (select an area)
 bindsym --release $mod+x exec --no-startup-id import /tmp/latest-screenshot.png
@@ -65,7 +83,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # change focus
 bindsym $mod+h focus left
