@@ -1,0 +1,7 @@
+configuration {
+  modi: "drun,run,window";
+  show-icons: true;
+  icon-theme: "Papirus";
+  font: "JetBrains Mono 12";
+}
+@theme "~/.config/rofi/themes/tokyonight-moon.rasi"
