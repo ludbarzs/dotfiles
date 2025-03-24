@@ -29,12 +29,20 @@ zinit light Aloxaf/fzf-tab
 # Add in snippets
 zinit snippet OMZL::git.zsh
 zinit snippet OMZP::git
+    # gst → git status
+    # gaa → git add --all
+    # gcmsg → git commit -m
 zinit snippet OMZP::sudo
+    # sudo !! to add sudo to last command
 zinit snippet OMZP::archlinux
-zinit snippet OMZP::aws
-zinit snippet OMZP::kubectl
-zinit snippet OMZP::kubectx
+    # pacin -> sudo pacman -S
 zinit snippet OMZP::command-not-found
+    # Suggestions for command-not-found
+    
+# Options that are not required now
+# zinit snippet OMZP::aws
+# zinit snippet OMZP::kubectl
+# zinit snippet OMZP::kubectx
 
 # Load completions
 autoload -Uz compinit && compinit
