@@ -19,7 +19,7 @@ size = 10.5
 style = {shape = "Block", blinking = "On"}
 
 [mouse]
-hide_when_typing = true
+hide_when_typing = false
 
 [colors.primary]
 background = "#1f2335"
@@ -66,7 +66,7 @@ green = "#9ece6a"
 yellow = "#e0af68"
 blue = "#7aa2f7"
 magenta = "#bb9af7"
-cyan = "#7dcfff"
+cyan = "#2ce8e8"
 white = "#c0caf5"
 
 [colors.bright]
@@ -76,13 +76,6 @@ green = "#9ece6a"
 yellow = "#e0af68"
 blue = "#7aa2f7"
 magenta = "#bb9af7"
-cyan = "#7dcfff"
+cyan = "#2ce8e8"
 white = "#c0caf5"
 
-[[colors.indexed_colors]]
-index = 16
-color = "#ff9e64"
-
-[[colors.indexed_colors]]
-index = 17
-color = "#ff9e64"
