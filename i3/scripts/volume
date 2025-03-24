@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Function to get the current volume
+get_volume() {
+    pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -n 1
+}
+
+# Initial volume
+VOLUME=$(get_volume)
+echo "<span color='#7aa2f7'>    $VOLUME%  </span>"

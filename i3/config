@@ -5,7 +5,7 @@ set $mod Mod4
 # Font
 # font pango:overpass 11 
 # font pango:JetBrains Mono 11
-font pango:JetBrainsMono Nerd Font
+font pango:JetBrainsMono Nerd Font 12
 
 # Borders
 default_border none
@@ -35,7 +35,7 @@ bar {
     focused_workspace   $COLOR_BG $COLOR_BLUE 
     active_workspace    $COLOR_BG $COLOR_GREEN $COLOR_BG
     inactive_workspace  $COLOR_BG $COLOR_COMMENT $COLOR_BG
-    urgent_workspace    $COLOR_BG $COLOR_CYAN $COLOR_BG
+    urgent_workspace    $COLOR_BG $COLOR_RED $COLOR_BG
     binding_mode        $COLOR_BG $COLOR_YELLOW $COLOR_BG
   }
 }
@@ -59,6 +59,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 exec --no-startup-id nm-applet
+
+# Start emacs on startup 
+exec --no-startup-id emacs --daemon
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -133,16 +136,16 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # Workspaces
-set $ws1 "1 "
-set $ws2 "2 "
-set $ws3 "3 "
-set $ws4 "4 "
+set $ws1 "1  "
+set $ws2 "2  "
+set $ws3 "3  "
+set $ws4 "4  "
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "9 "
-set $ws10 "10 "
+set $ws9 "9  "
+set $ws10 "10  "
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
