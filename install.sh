@@ -5,21 +5,21 @@ echo "Updateing system..."
 sudo pacman -Syu --noconfirm
 
 echo "Installing packages..."
-sudo pacman -S alacritty --noconfirm
-sudo pacman -S neovim --noconfirm
-sudo pacman -S tmux --noconfirm
-sudo pacman -S picom --noconfirm
-sudo pacman -S neofetch --noconfirm
-sudo pacman -S rofi --noconfirm
-sudo pacman -S spotify-launcher --noconfirm
+sudo pacman -S --needed alacritty --noconfirm
+sudo pacman -S --needed neovim --noconfirm
+sudo pacman -S --needed tmux --noconfirm
+sudo pacman -S --needed picom --noconfirm
+sudo pacman -S --needed neofetch --noconfirm
+sudo pacman -S --needed rofi --noconfirm
+sudo pacman -S --needed spotify-launcher --noconfirm
+sudo pacman -S --needed fzf    # For zsh
+sudo pacman -S --needed zoxide # For zsh
 
 read -p "Just a Reminder: To apply spotify theme you need yay and spiceify! (y/n): " user_input
 
-if
 USER_HOME=$(eval echo ~$SUDO_USER)
 DOTFILES_DIR="$USER_HOME/source-code/.dotfiles"
 CONFIG_DIR="$USER_HOME/.config"
-
 FILES=($(ls $DOTFILES_DIR)) # Automatically list all files in the directory
 
 for FILE in "${FILES[@]}"; do
