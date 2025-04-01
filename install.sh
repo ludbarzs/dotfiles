@@ -15,6 +15,8 @@ sudo pacman -S --needed spotify-launcher --noconfirm
 sudo pacman -S --needed flameshot --noconfirm
 sudo pacman -S --needed fzf --noconfirm    # For zsh
 sudo pacman -S --needed zoxide --noconfirm # For zsh
+sudo pacman -S --needed xcolor --noconfirm
+sudo pacman -S --needed xclip --noconfirm
 
 read -p "Just a Reminder: To apply spotify theme you need yay and spiceify! (y/n): " user_input
 
