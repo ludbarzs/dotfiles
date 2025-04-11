@@ -84,8 +84,9 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias lo='libreoffice'
 alias nv='nvim'
-alias nb='NVIM_APPNAME=nvim.bak nvim' # LazyVim
-alias no='NVIM_APPNAME=nvim-org nvim' # LazyVim
+alias nb='NVIM_APPNAME=nvim-kickstart nvim'
+alias no='NVIM_APPNAME=nvim-org nvim'
+alias ny='NVIM_APPNAME=nvim-yt nvim'
 
 # Shell integrations
 eval "$(fzf --zsh)"

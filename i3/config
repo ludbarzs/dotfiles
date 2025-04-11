@@ -60,8 +60,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 exec --no-startup-id nm-applet
 
-# Start emacs on startup 
-exec --no-startup-id emacs --daemon
+# Set Key repeat
+exec --no-startup-id xset r rate 200 60
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -229,15 +229,15 @@ exec_always feh --bg-scale /home/arg/Pictures/wallpaper_active.jpg
 assign [class="Firefox"] $ws1
 assign [class="obsidian"] $ws9
 assign [class="spotify-launcher"] $ws10
+for_window [class="Spotify"] move to $ws10
 
 # Open Applications
 exec --no-startup-id i3-msg "workspace $ws1; exec firefox"
 exec --no-startup-id i3-msg "workspace $ws2; exec alacritty"
 exec --no-startup-id i3-msg "workspace $ws3; exec alacritty"
-exec --no-startup-id i3-msg "workspace $ws9; exec obsidian"
+exec --no-startup-id i3-msg "workspace $ws9; exec alacritty -e no ~/Documents/org/refile.org"
 exec --no-startup-id i3-msg "workspace $ws10; exec spotify-launcher"
 
-for_window [class="Spotify"] move to $ws10
 
 # Start Picom
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
