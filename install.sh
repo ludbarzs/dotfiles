@@ -17,6 +17,8 @@ sudo pacman -S --needed fzf --noconfirm    # For zsh
 sudo pacman -S --needed zoxide --noconfirm # For zsh
 sudo pacman -S --needed xcolor --noconfirm
 sudo pacman -S --needed xclip --noconfirm
+sudo pacman -S --needed lazygit --noconfirm # For nvim
+sudo pacman -S --needed trash-cli --noconfirm # not to trashcan
 
 read -p "Just a Reminder: To apply spotify theme you need yay and spiceify! (y/n): " user_input
 

@@ -97,10 +97,11 @@ return {
       end,
     })
 
+    local clangd_capabilities = vim.deepcopy(capabilities)
+    clangd_capabilities.offsetEncoding = { "utf-16" }
+
     lspconfig.clangd.setup({
-      capabilities = {
-        offsetEncoding = { "utf-8" }, -- force utf-8
-      },
+      capabilities = clangd_capabilities,
     })
   end,
 }

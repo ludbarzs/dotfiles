@@ -87,6 +87,9 @@ alias nv='nvim'
 alias nb='NVIM_APPNAME=nvim-kickstart nvim'
 alias no='NVIM_APPNAME=nvim-org nvim'
 alias ny='NVIM_APPNAME=nvim-yt nvim'
+alias rm='trash-put'
+# Force remove (bypass trash)
+alias rmf='/bin/rm -i'
 
 # Shell integrations
 eval "$(fzf --zsh)"
