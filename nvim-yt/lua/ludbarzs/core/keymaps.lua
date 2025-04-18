@@ -1,3 +1,4 @@
+-- TODO: add gq(select in [q]otes) gt(select in [t]ags)
 vim.g.mapleader = " "
 
 local keymap = vim.keymap
@@ -8,7 +9,7 @@ keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
--- increment/decrement numbers 
+-- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
 
