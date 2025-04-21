@@ -86,7 +86,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec alacritty -e tmux
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -233,8 +233,8 @@ for_window [class="Spotify"] move to $ws10
 
 # Open Applications
 exec --no-startup-id i3-msg "workspace $ws1; exec firefox"
-exec --no-startup-id i3-msg "workspace $ws2; exec alacritty -e tmux"
-exec --no-startup-id i3-msg "workspace $ws3; exec alacritty -e tmux"
+exec --no-startup-id i3-msg "workspace $ws2; exec alacritty"
+exec --no-startup-id i3-msg "workspace $ws3; exec alacritty"
 exec --no-startup-id i3-msg "workspace $ws9; exec alacritty -e no ~/Documents/org/refile.org"
 exec --no-startup-id i3-msg "workspace $ws10; exec spotify-launcher"
 
