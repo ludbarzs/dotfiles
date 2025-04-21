@@ -25,3 +25,20 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+
+-- Set keymap to run python files in tmux terminal 2
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "python",
+  callback = function()
+    vim.keymap.set("n", "<leader>r", function()
+      -- Get current file path
+      local file = vim.fn.expand("%")
+
+      -- Command to first activate venv then run the file
+      local cmd = string.format("source venv/bin/activate && python %s", file)
+
+      -- Send to tmux pane 3
+      vim.fn.system(string.format('tmux send-keys -t 2 "%s" Enter', cmd))
+    end, { buffer = true })
+  end,
+})
