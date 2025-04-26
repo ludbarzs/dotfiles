@@ -28,8 +28,9 @@ return {
         "ts_ls",
         "html",
         "cssls",
-        "pyright",
+        "ruff",
         "lua_ls",
+        "tailwindcss",
       },
     })
 
@@ -41,7 +42,7 @@ return {
         "isort", -- python formatter
         "black", -- python formatter
         -- Linters
-        "pylint",
+        "ruff",
         "eslint_d",
       },
     })

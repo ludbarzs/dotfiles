@@ -1,11 +1,11 @@
 return {
-  'windwp/nvim-autopairs',
+  "windwp/nvim-autopairs",
   dependencies = {
     "hrsh7th/nvim-cmp",
   },
   config = function()
     local autoparis = require("nvim-autopairs")
-    
+
     -- configure autoparis
     autoparis.setup({
       check_ts = true,
@@ -13,7 +13,7 @@ return {
         lua = { "string" }, -- don't add pairs in lua srtring treesitter nodes
         javascript = { "template_string" }, -- dont add paris on JS template_string treesitter ndoes
         java = false, -- don't check treesitter on java
-      }
+      },
     })
 
     -- import nvim-autopairs copletion functionality

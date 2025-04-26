@@ -19,14 +19,14 @@ return {
             ["<C-k>"] = actions.move_selection_previous, -- move to prev result
             ["<C-j>"] = actions.move_selection_next, -- move to next result
             ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-          }
-        }
-      }
+          },
+        },
+      },
     })
 
     telescope.load_extension("fzf")
 
-    -- set keymaps 
+    -- set keymaps
     local keymap = vim.keymap
 
     keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
@@ -34,6 +34,11 @@ return {
     keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
     keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
     keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find ToDo's" })
-    vim.api.nvim_set_keymap('n', '<leader>fd', ':Telescope find_files cwd=~/.config/nvim-yt<CR>', { desc = "Go to .config files", noremap = true, silent = true })
+    vim.api.nvim_set_keymap(
+      "n",
+      "<leader>fd",
+      ":Telescope find_files cwd=~/source-code/.dotfiles/<CR>",
+      { desc = "Go to .config files", noremap = true, silent = true }
+    )
   end,
 }
