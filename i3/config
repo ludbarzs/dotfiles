@@ -50,9 +50,6 @@ exec --no-startup-id dex --autostart --environment i3
 # Fixes dolphin remembering how to open file types
 exec --no-startup-id export XDG_MENU_PREFIX=arch-
 
-# Take a screenshot upon pressing $mod+x (select an area)
-bindsym --release $mod+x exec --no-startup-id import /tmp/latest-screenshot.png
-
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -69,6 +66,12 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Sleep 
+bindsym $mod+u exec systemctl suspend
+
+# Open dolphin
+bindsym $mod+Shift+d exec dolphin
 
 # Screenshot 
 bindsym $mod+Shift+s exec flameshot gui
@@ -95,10 +98,10 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+k focus down
-bindsym $mod+j focus up
-bindsym $mod+l focus right
+bindsym Control+h focus left
+bindsym Control+k focus down
+bindsym Control+j focus up
+bindsym Control+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -107,10 +110,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
+bindsym $mod+Shift+h move left
 bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+j move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left

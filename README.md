@@ -11,4 +11,10 @@
 3. There are files like .zshrc and .p10k that are meant to go in your home directory, they install scirpt does not yet include them
    - Make seperate symlinks for /home files
 
-###
+### Packages if I ever reinstall will be useful
+
+- Only started collecting after April 27 2025
+- Loud beeping diabled on error:
+  - https://wiki.archlinux.org/title/PC_speaker
+- Dolphin finds programs to open files with:
+  - https://www.lorenzobettini.it/2024/05/fixing-the-empty-open-with-in-dolphin-in-hyprland/
