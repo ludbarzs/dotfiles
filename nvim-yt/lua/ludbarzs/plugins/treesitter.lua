@@ -1,6 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  --[[   event = { "BufReadPre", "BufNewFile" }, -- Lazy load on these event (open file) ]]
+  event = { "BufReadPre", "BufNewFile" }, -- Lazy load on these event (open file)
   build = ":TSUpdate", -- Exectues whe n plugin is updated or installed (Updates all language parsers)
   dependencies = {
     "windwp/nvim-ts-autotag",
@@ -28,7 +28,6 @@ return {
         "php",
         "lua",
         "rust",
-
         -- Web Dev
         "html",
         "css",
