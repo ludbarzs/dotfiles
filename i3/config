@@ -98,10 +98,10 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # change focus
-bindsym Control+h focus left
-bindsym Control+k focus down
-bindsym Control+j focus up
-bindsym Control+l focus right
+bindsym $mod+h focus left
+bindsym $mod+k focus down
+bindsym $mod+j focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left

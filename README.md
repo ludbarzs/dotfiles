@@ -18,3 +18,5 @@
   - https://wiki.archlinux.org/title/PC_speaker
 - Dolphin finds programs to open files with:
   - https://www.lorenzobettini.it/2024/05/fixing-the-empty-open-with-in-dolphin-in-hyprland/
+- Firefox use dolphin:
+  - https://wiki.archlinux.org/title/Firefox#XDG_Desktop_Portal_integration
