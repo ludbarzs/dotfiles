@@ -28,6 +28,7 @@ return {
         "php",
         "lua",
         "rust",
+        "latex",
         -- Web Dev
         "html",
         "css",

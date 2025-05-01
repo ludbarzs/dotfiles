@@ -1,5 +1,6 @@
 -- TODO: add gq(select in [q]otes) gt(select in [t]ags)
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 local keymap = vim.keymap
 

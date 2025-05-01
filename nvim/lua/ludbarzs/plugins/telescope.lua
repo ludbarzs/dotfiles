@@ -34,11 +34,18 @@ return {
     keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
     keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
     keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find ToDo's" })
-    vim.api.nvim_set_keymap(
+    keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Fuzzy find help docs" })
+    keymap.set(
       "n",
       "<leader>fd",
-      ":Telescope find_files cwd=~/source-code/.dotfiles/<CR>",
+      ":Telescope find_files cwd=~/source-code/.dotfiles<CR>",
       { desc = "Go to .config files", noremap = true, silent = true }
+    )
+    keymap.set(
+      "n",
+      "<leader>fn",
+      ":Telescope find_files cwd=~/Documents/neorg/<CR>",
+      { desc = "Go to notes", noremap = true, silent = true }
     )
   end,
 }

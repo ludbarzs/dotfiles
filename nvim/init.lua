@@ -1,1 +1,2 @@
-require("ludbarzs")
+require("ludbarzs.core")
+require("ludbarzs.lazy")

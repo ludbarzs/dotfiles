@@ -14,7 +14,7 @@ return {
       map("n", "[h", gs.prev_hunk, "Prev Hunk")
 
       -- Action
-      map("n", "<leader>hs", gs.state_hunk, "Stage hunk")
+      map("n", "<leader>hs", gs.stage_hunk, "Stage hunk")
       map("n", "<leader>hr", gs.reset_hunk, "Reset hunk")
       map("v", "<leader>hs", function()
         gs.state_hunk({ vim.fn.line("."), vim.fn.line("v") })
