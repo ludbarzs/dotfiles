@@ -36,7 +36,8 @@ vim.api.nvim_create_autocmd("FileType", {
       local file = vim.fn.expand("%")
 
       -- Command to first activate venv then run the file
-      local cmd = string.format("source venv/bin/activate && python %s", file)
+      local cmd =
+        string.format("source venv/bin/activate && python ~/source-code/Aligner/src/app.py && python %s", file)
 
       -- Send to tmux pane 3
       vim.fn.system(string.format('tmux send-keys -t 2 "%s" Enter', cmd))
