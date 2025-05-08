@@ -5,6 +5,8 @@ return {
     local lint = require("lint")
 
     lint.linters_by_ft = {
+      -- To install it in project directory: npm install eslint-plugin-import --save-dev
+      -- If having issues run: npx eslint --init
       javascript = { "eslint_d" },
       typescript = { "eslint_d" },
       javascriptreact = { "eslint_d" },

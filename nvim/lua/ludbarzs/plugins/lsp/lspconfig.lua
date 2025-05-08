@@ -9,8 +9,6 @@ return {
   config = function()
     local lspconfig = require("lspconfig")
 
-    local mason_lspconfig = require("mason-lspconfig")
-
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local keymap = vim.keymap
@@ -50,13 +48,6 @@ return {
         opts.desc = "Show line diagnostics"
         keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
-        -- Didnt work, sais original goto_prev is deprecated
-        -- opts.desc = "Go to previous diagnostic"
-        -- keymap.set("n", "[d", vim.diagnostic.goto.prev, opts) -- jump to previous diagnostic in buffer
-        --
-        -- opts.desc = "Go to next diagnostic"
-        -- keymap.set("n", "]d", vim.diagnostic.goto.next, opts) -- jump to next diagnostic in buffer
-
         opts.desc = "Show documentation for what is under cursor"
         keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
@@ -86,15 +77,6 @@ return {
         border = "rounded",
         source = true, -- show the source of the diagnostic (e.g. eslint, pyright)
       },
-    })
-
-    mason_lspconfig.setup_handlers({
-      -- default handler for installed servers
-      function(server_name)
-        lspconfig[server_name].setup({
-          capabilities = capabilities,
-        })
-      end,
     })
 
     local clangd_capabilities = vim.deepcopy(capabilities)
