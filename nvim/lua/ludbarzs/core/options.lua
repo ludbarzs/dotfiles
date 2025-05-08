@@ -9,11 +9,12 @@ opt.relativenumber = true
 opt.number = true
 
 -- tabs & indentation
-opt.tabstop = 2 
+opt.tabstop = 2
 opt.shiftwidth = 2 -- Controls how many spaces >> and << moves
 opt.softtabstop = 2 -- Spaces inserted when pressing tab
 opt.expandtab = true -- Tab is spaces not \t
 opt.autoindent = true -- Next line will have same indentation
+opt.scrolloff = 999 -- Lines to keep above and below the cursor
 
 opt.wrap = false
 
