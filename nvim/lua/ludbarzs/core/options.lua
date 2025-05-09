@@ -38,3 +38,6 @@ opt.clipboard:append("unnamedplus") -- system clipboard as default register
 --split windows
 opt.splitright = true
 opt.splitbelow = true
+
+-- Undo History
+opt.undofile = true
