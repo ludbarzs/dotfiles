@@ -12,3 +12,7 @@ vim.keymap.set("n", "<Tab>", "za", { desc = "Seitch the task under the cursor be
 vim.keymap.set("n", "<leader>li", "I- <Esc>", { desc = "Convert line to list item" })
 
 vim.opt_local.conceallevel = 2
+
+-- Auto save for nerog files
+vim.o.autowrite = true
+vim.o.autowriteall = true
