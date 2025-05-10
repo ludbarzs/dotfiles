@@ -85,6 +85,7 @@ alias grep='grep --color=auto'
 alias lo='libreoffice'
 alias nv='nvim'
 alias nk='NVIM_APPNAME=nvim-kickstart nvim'
+alias nm='NVIM_APPNAME=nvim-math nvim'
 alias rm='trash-put'
 # Force remove (bypass trash)
 alias rmf='/bin/rm -i'
