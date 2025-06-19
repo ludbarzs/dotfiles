@@ -1,17 +1,152 @@
 #!/bin/bash
 HOME_DIR="$HOME"
 CONFIG_DIR="${HOME_DIR}/.config"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 check_sudo() {
-
+  if ! sudo -v; then
+    echo "ERROR: Sudo access required." >&2
+    exit 1
+  fi
 }
 
+install_yay() {
+  if command -v yay &>/dev/null; then
+    echo "yay is already installed"
+    return
+  fi
+
+  read -rp "Do you want to install yay (AUR package manager)? [y/N] " reply
+  if [[ "$reply" =~ ^[Yy] ]]; then
+    check_sudo  # Verify sudo access
+    sudo pacman -S --needed git base-devel || return 1
+
+    # Make a temp dir to avoid clutter
+    temp_dir=$(mktemp -d)
+    git clone https://aur.archlinux.org/yay.git "$temp_dir/yay" || return 1
+    cd "$temp_dir/yay" || return 1
+    makepkg -si --noconfirm || return 1
+
+    echo "yay installed successfully"
+
+    # Removes temp dir in /tmp
+    rm -rf "$temp_dir"
+  else 
+    echo "Skipping yay install (Script may break)"
+  fi
+}
+
+install_dependencies() {
+  echo "This scrip requires sudo to install some dependencies you can skip this step and install the dependencies yourself"
+  read -rp "Proceed? [y/N] " reply
+  if [[ "$reply" =~ ^[Yy] ]]; then
+    check_sudo  # Verify sudo access
+    # For vim wl-clipboard, npm, nodejs, curl
+    sudo pacman -Syu --needed firefox
+    sudo pacman -Syu --needed neovim
+    sudo pacman -Syu --needed tree-sitter-cli
+    sudo pacman -Syu --needed lazygit
+  else
+    echo "Skipping dependencies"
+  fi
+}
+
+install_dependencies
 
 if [ ! -d "$CONFIG_DIR" ]; then
 	echo "Creating .config for $USER"
-	# mkdir -p "$CONFIG_DIR"
+	mkdir -p "$CONFIG_DIR"
 fi
 
-echo "$HOME_DIR"
-echo "$CONFIG_DIR"
-echo "$DIR"
+# If a directory exists in .config the user will be given choices of:
+# 1. mv .config/current to ./config/current.bak (default)
+# 2. replace
+# 3. skip
+dir_exists() {
+  # path in dotfiles for file (e.g. nvim)
+  source="$1"
+  # path to .config for file (e.g. nvim)
+  target="$2"
+
+  echo "$target already exists, choose:"
+  echo "1 - Move to $target.bak and link"
+  echo "2 - Replace $target with $source"
+  echo "3 - Skip this directory"
+
+  read -p "Enter your choice [1-3]: " reply
+
+  case "$reply" in
+    1)
+      echo "Moving $target to $target.bak"
+      mv "$target" "$target.bak"
+      ln -s "$source" "$target"
+      ;;
+    2)
+      read -rp "Deleting $target! Are you sure? " confirm
+      if [[ "$confirm" =~ ^[Yy] ]]; then
+        rm -rf "$target" 
+        ln -s "$source" "$target"
+      else
+        dir_exists "$source" "$target"
+      fi
+      ;;
+    3)
+      echo "Skipping $target"
+      return 
+      ;;
+    *)
+      dir_exists "$source" "$target"
+      ;;
+  esac
+}
+
+# If creates symlinks between current .dotfiles and .config
+link_configs() {
+  echo "Linking configurations from $SCRIPT_DIR to $CONFIG_DIR"
+
+  # For every directory in the directory where script is 
+  for d in "$SCRIPT_DIR"/*/; do
+    # Get name of the dir without path (e.g. from dotfiles/nvim to nvim)
+    dir_name=$(basename "$d")
+
+    # Path to .config/target (e.g. /.config/nvim)
+    config_path="$CONFIG_DIR/$dir_name"
+    if [[ -d "$config_path" ]]; then
+      echo "$config_path exists"
+      # Prompt user with options if directory exists in .config
+      dir_exists "$d" "$CONFIG_DIR/$dir_name"
+
+    else  # Directory does not exist in .confg
+      # Create the symlink 
+      ln -s "$d" "$CONFIG_DIR/$dir_name"
+      echo "Symlink created $CONFIG_DIR/$dir_name"
+    fi
+  done
+
+  # For every .flie in directory where script is
+  for file in "$SCRIPT_DIR"/.*; do
+    # Check that files are not . .. vai .git (dir)
+    if [[ "$file" == "$SCRIPT_DIR/." || "$file" == "$SCRIPT_DIR/.." || -d "$file" ]]; then
+      continue
+    fi
+
+    file_name=$(basename "$file")
+    target_path="$HOME/$file_name"
+    case "$file_name" in
+      .git|.gitignore|.DS_Store|install.sh)
+        continue
+        ;;
+    esac
+
+    if [[ -e  "$target_path" ]]; then
+      echo "$target_path exists"
+
+      dir_exists "$file" "$target_path"
+    else 
+        ln -s "$file" "$target_path"
+        echo "Symlink created: $target_path -> $file"
+    fi
+  done
+}
+
+link_configs
