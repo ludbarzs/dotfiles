@@ -1,3 +1,4 @@
+# TODO: make the reflector mirrorlist update run on a timer weekly
 #!/bin/bash
 HOME_DIR="$HOME"
 CONFIG_DIR="${HOME_DIR}/.config"
@@ -36,14 +37,38 @@ install_yay() {
   fi
 }
 
+install_yay
+
 install_dependencies() {
   echo "This scrip requires sudo to install some dependencies you can skip this step and install the dependencies yourself"
   read -rp "Proceed? [y/N] " reply
   if [[ "$reply" =~ ^[Yy] ]]; then
     check_sudo  # Verify sudo access
+
+    # Ensure fastest pacman downloads
+    sudo pacman -Syu --needed reflector rsync
+
+    # Ensure optimal mirror location with reflector
+    echo "The script is going to update your /etc/pacman.d/mirrorlist for optimal package download with pacman (Latvia centric)"
+    echo "This might take a moment..."
+    if sudo reflector \
+	  --sort rate \
+	  --latest 200 \
+	  --country "Latvia,Lithuania,Estonia,Germany,Sweden,Poland,Denmark,Finland" \
+	  --protocol https \
+	  --download-timeout 2 \
+	  --connection-timeout 2 \
+	  --save /etc/pacman.d/mirrorlist 2>/dev/null; then
+
+	echo "Mirrorlist successfully updated"
+     else 
+	echo "Failed to update mirrors!" >&2
+fi
+
+    
     # For vim wl-clipboard, npm, nodejs, curl
     sudo pacman -Syu --needed firefox
-    sudo pacman -Syu --needed neovim
+    sudo pacman -Syu --needed nvim
     sudo pacman -Syu --needed tree-sitter-cli
     sudo pacman -Syu --needed lazygit
 
