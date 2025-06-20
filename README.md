@@ -1,4 +1,4 @@
-# My Hyprland Dotfiles
+# My i3 Dotfiles
 
 Dotflies by [ludbarzs](https://github.com/ludbarzs)
 
