@@ -46,6 +46,9 @@ install_dependencies() {
     sudo pacman -Syu --needed neovim
     sudo pacman -Syu --needed tree-sitter-cli
     sudo pacman -Syu --needed lazygit
+
+
+    sudo pacman -Syu --needed spotify-launcher
   else
     echo "Skipping dependencies"
   fi
