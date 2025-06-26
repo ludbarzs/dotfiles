@@ -1,5 +1,6 @@
-# TODO: make the reflector mirrorlist update run on a timer weekly
 #!/bin/bash
+# TODO: Make a quicker option to preform the symlinks
+# TODO: Add yay dependencie install provided yay is installed for librewolf
 HOME_DIR="$HOME"
 CONFIG_DIR="${HOME_DIR}/.config"
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -40,7 +41,6 @@ install_yay() {
 install_yay
 
 
-
 install_dependencies() {
   echo "This scrip requires sudo to install some dependencies you can skip this step and install the dependencies yourself"
   read -rp "Proceed? [y/N] " reply
@@ -74,6 +74,11 @@ fi
     sudo pacman -Syu --needed lazygit
     sudo pacman -Syu --needed flameshot
     sudo pacman -Syu --needed spotify-launcher
+    sudo pacman -Syu --needed feh
+    sudo pacman -Syu --needed dolphin
+    sudo pacman -Syu --needed flameshot
+    sudo pacman -Syu --needed xcolor
+    sudo pacman -Syu --needed zsh fzf zoxide
 
   else
     echo "Skipping dependencies"
@@ -81,6 +86,18 @@ fi
 }
 
 install_dependencies
+
+
+
+
+create_dirs() {
+    echo "Creating Downloads, Pictures, Documents in $HOME"
+    mkdir -p "$HOME/Downloads"
+    mkdir -p "$HOME/Documents"
+    mkdir -p "$HOME/Pictures"
+}
+
+create_dirs
 
 if [ ! -d "$CONFIG_DIR" ]; then
 	echo "Creating .config for $USER"
@@ -179,3 +196,21 @@ link_configs() {
 }
 
 link_configs
+
+# Set zsh as default shell
+set_zsh() {
+    if command -v zsh >/dev/null 2>&1; then
+        echo "Zsh is installed."
+        read -rp "Do you want to set zsh as your default shell? [y/N] " reply
+        if [[ "$reply" =~ ^[Yy] ]]; then
+            chsh -s "$(command -v zsh)"
+            echo "Zsh has been set as your default shell. You may need to log out and back in."
+        else
+            echo "Default shell change canceled."
+        fi
+    else
+        echo "Zsh is not installed."
+    fi
+}
+
+set_zsh
