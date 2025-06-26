@@ -39,6 +39,8 @@ install_yay() {
 
 install_yay
 
+
+
 install_dependencies() {
   echo "This scrip requires sudo to install some dependencies you can skip this step and install the dependencies yourself"
   read -rp "Proceed? [y/N] " reply
@@ -67,13 +69,12 @@ fi
 
     
     # For vim wl-clipboard, npm, nodejs, curl
-    sudo pacman -Syu --needed firefox
     sudo pacman -Syu --needed nvim
     sudo pacman -Syu --needed tree-sitter-cli
     sudo pacman -Syu --needed lazygit
-
-
+    sudo pacman -Syu --needed flameshot
     sudo pacman -Syu --needed spotify-launcher
+
   else
     echo "Skipping dependencies"
   fi
