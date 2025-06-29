@@ -72,13 +72,12 @@ fi
     sudo pacman -Syu --needed nvim
     sudo pacman -Syu --needed tree-sitter-cli
     sudo pacman -Syu --needed lazygit
-    sudo pacman -Syu --needed flameshot
     sudo pacman -Syu --needed spotify-launcher
     sudo pacman -Syu --needed feh
     sudo pacman -Syu --needed dolphin
-    sudo pacman -Syu --needed flameshot
-    sudo pacman -Syu --needed xcolor
+    sudo pacman -Syu --needed flameshot xcolor
     sudo pacman -Syu --needed zsh fzf zoxide
+    sudo pacman -Syu --needed polybar
 
   else
     echo "Skipping dependencies"
