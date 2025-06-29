@@ -190,6 +190,9 @@ exec --no-startup-id i3-msg "workspace $ws2; exec alacritty"
 exec --no-startup-id i3-msg "workspace $ws3; exec alacritty"
 exec --no-startup-id i3-msg "workspace $ws10; exec spotify-launcher"
 
+assign [class="^Spotify$"] → 10
+assign [class="^librewolf$"] → 1
+
 ##############
 ##Appearance##
 ##############
@@ -201,6 +204,7 @@ exec_always feh --bg-scale /home/arg/Pictures/wallpaper_active.jpg
 gaps inner 5
 gaps top -5
 
-bar {
-        status_command i3status
-}
+# Bar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+
