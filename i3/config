@@ -183,22 +183,24 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id dex --autostart --environment i3
 # NetworkManager
 exec --no-startup-id nm-applet
+# Set up second monitor
+exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DP-4
 
-exec --no-startup-id i3-msg "workspace $ws0; exec alacritty"
-exec --no-startup-id i3-msg "workspace $ws1; exec librewolf"
-exec --no-startup-id i3-msg "workspace $ws2; exec alacritty"
-exec --no-startup-id i3-msg "workspace $ws3; exec alacritty"
-exec --no-startup-id i3-msg "workspace $ws10; exec spotify-launcher"
+exec --no-startup-id i3-msg "workspace $ws0; exec alacritty, move workspace to output DP-4"
+exec --no-startup-id i3-msg "workspace $ws1; exec firefox, move workspace to output HDMI-0"
+exec --no-startup-id i3-msg "workspace $ws2; exec alacritty, move workspace to output DP-4"
+exec --no-startup-id i3-msg "workspace $ws3; exec alacritty, move workspace to output DP-4"
+exec --no-startup-id i3-msg "workspace $ws10; exec spotify-launcher, move workspace to output DP-4"
 
 assign [class="^Spotify$"] → 10
-assign [class="^librewolf$"] → 1
+assign [class="^firefox$"] → 1
 
 ##############
 ##Appearance##
 ##############
 
 # Wallpaper
-exec_always feh --bg-scale /home/arg/Pictures/wallpaper_active.jpg
+exec_always feh --bg-scale /home/arg/Pictures/wallpaper_active.png
 
 # Gaps
 gaps inner 5
