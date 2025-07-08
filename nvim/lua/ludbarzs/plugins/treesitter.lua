@@ -1,80 +1,28 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  event = { "BufReadPre", "BufNewFile" }, -- Lazy load on these event (open file)
-  build = ":TSUpdate", -- Exectues whe n plugin is updated or installed (Updates all language parsers)
-  dependencies = {
-    "windwp/nvim-ts-autotag",
-  },
-  config = function()
-    -- import nvim-treesitter plugin
-    local treesitter = require("nvim-treesitter.configs")
-
-    -- configure treesitter
-    treesitter.setup({
-      highlight = {
-        enable = true,
+  build = ":TSUpdate",
+  main = "nvim-treesitter.configs", -- TS has its own jjmodule to be defined in setup(), which this does
+  opts = {
+    ensure_installed = {
+      "lua",
+      "markdown",
+      "norg",
+    },
+    auto_install = true,
+    highlight = {
+      enable = true,
+    },
+    indent = { enable = true },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        -- TODO: set Vhyrrro keybindings
+        init_selection = "gnn",
+        node_incremental = "grn",
+        scope_incremental = "grc",
+        node_decremental = "grm",
       },
-      -- enable indentaion
-      indent = { enable = true },
-      -- enable autotagging (w/ nvim-ts-autotag plugin)
-      autotag = {
-        enable = true,
-        filetypes = { "html", "xml", "javascript", "typescriptreact", "javascriptreact", "svelte", "vue", "tsx", "jsx" },
-      },
-      -- ensure these language servers are installed
-      ensure_installed = {
-        -- Core Languages
-        "python",
-        "php",
-        "lua",
-        "rust",
-        "latex",
-        -- Web Dev
-        "html",
-        "css",
-        "scss",
-        "javascript",
-        "typescript",
-        "tsx", -- React/JSX/TSX
+    },
 
-        -- Shell and Scripting
-        "bash",
-
-        -- Data Formats
-        "json",
-        "jsonc",
-        "yaml",
-        "toml",
-        "xml",
-        "csv",
-
-        -- DB & Markup
-        "sql", -- MySQL, general SQL support
-        "markdown",
-        "markdown_inline",
-
-        -- Config and Dev Tools
-        "vim",
-        "vimdoc",
-        "query", -- Treesitter's own query language
-        "make",
-        "dockerfile",
-        "gitignore",
-        "ini",
-
-        -- Optional Nice-to-Haves
-        "regex", -- better regex highlighting
-        "comment", -- helps with comment-aware features
-      },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
-          scope_incremental = false,
-          node_decremental = "<bs>",
-        },
-      },
-    })
-  end,
+  }
 }

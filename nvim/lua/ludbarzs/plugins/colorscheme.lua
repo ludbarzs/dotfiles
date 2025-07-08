@@ -1,7 +1,7 @@
 return {
-  "folke/tokyonight.nvim",
+  "nyoom-engineering/oxocarbon.nvim",
   priority = 1000,
-  config = function() 
-    vim.cmd("colorscheme tokyonight-storm")
+  config = function()
+    vim.cmd("colorscheme oxocarbon")
   end,
 }

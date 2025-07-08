@@ -70,7 +70,7 @@ install_dependencies() {
     fi
 
     # For vim wl-clipboard, npm, nodejs, curl
-    sudo pacman -Syu --needed nvim npm nodejs curl python-pywal tree-sitter-cli lazygit spotify-launcher feh dolphin flameshot xcolor zsh fzf zoxide polybar xclip
+    sudo pacman -Syu --needed nvim npm nodejs curl fd python-pywal tree-sitter-cli lazygit spotify-launcher feh dolphin flameshot xcolor zsh fzf zoxide polybar xclip
 
   else
     echo "Skipping dependencies"

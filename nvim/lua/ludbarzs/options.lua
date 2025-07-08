@@ -1,5 +1,5 @@
+--
 -- vim.cmd - Run vim script commands in lua
-
 -- Sets :Ex manue to tree style layout
 vim.cmd("let g:netrw_liststyle = 3")
 
@@ -14,7 +14,7 @@ opt.shiftwidth = 2 -- Controls how many spaces >> and << moves
 opt.softtabstop = 2 -- Spaces inserted when pressing tab
 opt.expandtab = true -- Tab is spaces not \t
 opt.autoindent = true -- Next line will have same indentation
-opt.scrolloff = 999 -- Lines to keep above and below the cursor
+opt.scrolloff = 999 -- Lines to keep above and below the cursor same as C-E, C-Y on j, k
 
 opt.wrap = false
 
@@ -24,7 +24,7 @@ opt.smartcase = true -- if you include cases, assumes to search case-sensitive
 
 opt.cursorline = true
 
--- turn on termguicolors for tokyonight colorshceme to work
+-- turn on termguicolors
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
@@ -41,3 +41,5 @@ opt.splitbelow = true
 
 -- Undo History
 opt.undofile = true
+
+
