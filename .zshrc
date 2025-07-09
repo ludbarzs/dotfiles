@@ -174,6 +174,7 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # PATH
 export PATH="$HOME/bin:$PATH"
+export EDITOR="nvim"
 
 # Start SSH agen
 
