@@ -30,6 +30,9 @@ tiling_drag modifier titlebar
 
 # Remap caps
 exec --no-startup-id setxkbmap -option caps:escape
+# Change keyboard language
+exec --no-startup-id "setxkbmap -layout us,lv -variant ,apostrophe -option grp:alt_shift_toggle"
+
 # Audio
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -41,7 +44,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
 
-# start a terminal
+# Start a terminal
 bindsym $mod+Return exec alacritty
 
 # Sleep 
