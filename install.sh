@@ -102,7 +102,7 @@ dir_exists() {
   # path to .config for file (e.g. nvim)
   target="$2"
 
-  if [[ "$BACKUP_CONFIG" = "" ]]; then
+  if [[ "$BACKUP_CONFIG" == "" ]]; then
     echo "$target already exists"
     echo "What do you want to do for all the conflicting files:"
     echo "1 - Move to $target.bak and link"
@@ -111,10 +111,10 @@ dir_exists() {
     read -p "Enter your choice [1-2]: " reply
 
     if [[ "$reply" == "1" ]]; then
-      BACKUP_CONFIG = 0 # Create backup
+      BACKUP_CONFIG=0 # Create backup
     fi
     if [[ "$reply" == "2" ]]; then
-      BACKUP_CONFIG = 1 # Don't create backup
+      BACKUP_CONFIG=1 # Don't create backup
     fi
   fi
 
