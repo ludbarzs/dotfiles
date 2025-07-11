@@ -10,6 +10,9 @@ font pango:monospace 12
 # Toggle between last used ws
 workspace_auto_back_and_forth yes
 
+# Windows doesn't focus on mouse hover
+focus_follows_mouse no
+
 # Borders
 default_border none
 
@@ -22,7 +25,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # Set Key repeat
-#exec --no-startup-id xset r rate 200 60
+exec --no-startup-id xset r rate 200 60
 
 ############
 ##Bindings##
@@ -112,8 +115,7 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+# Default workspace variables
 set $ws0 "0"
 set $ws1 "1"
 set $ws2 "2"
@@ -203,11 +205,12 @@ assign [class="^firefox$"] → 1
 ##############
 
 # Wallpaper
-exec_always feh --bg-scale /home/arg/Pictures/wallpaper_active.png
+exec_always feh --bg-scale /home/arg/Pictures/stairs.jpeg
 
 # Gaps
-gaps inner 5
-gaps top -5
+gaps inner 3
+gaps top -3
+gaps bottom -3
 
 # Bar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
