@@ -191,10 +191,17 @@ exec --no-startup-id nm-applet
 # Set up second monitor
 exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DP-4
 
-exec --no-startup-id i3-msg "workspace $ws0; exec alacritty, move workspace to output DP-4"
 exec --no-startup-id i3-msg "workspace $ws1; exec firefox, move workspace to output HDMI-0"
+exec --no-startup-id i3-msg "workspace $ws0; exec alacritty, move workspace to output DP-4"
 exec --no-startup-id i3-msg "workspace $ws2; exec alacritty, move workspace to output DP-4"
 exec --no-startup-id i3-msg "workspace $ws3; exec alacritty, move workspace to output DP-4"
+exec --no-startup-id i3-msg "workspace $ws4, move workspace to output DP-4"
+exec --no-startup-id i3-msg "workspace $ws5, move workspace to output DP-4"
+exec --no-startup-id i3-msg "workspace $ws6, move workspace to output DP-4"
+exec --no-startup-id i3-msg "workspace $ws7, move workspace to output DP-4"
+exec --no-startup-id i3-msg "workspace $ws8, move workspace to output DP-4"
+exec --no-startup-id i3-msg "workspace $ws8, move workspace to output DP-4"
+exec --no-startup-id i3-msg "workspace $ws9; exec alacritty --working-directory ~/Documents/neorg -e nvim guides/arch.norg, move workspace to output DP-4"
 exec --no-startup-id i3-msg "workspace $ws10; exec spotify-launcher, move workspace to output DP-4"
 
 assign [class="^Spotify$"] → 10
@@ -205,7 +212,7 @@ assign [class="^firefox$"] → 1
 ##############
 
 # Wallpaper
-exec_always feh --bg-scale /home/arg/Pictures/stairs.jpeg
+exec_always feh --bg-scale /home/arg/Pictures/wallpaper_active.png
 
 # Gaps
 gaps inner 3
