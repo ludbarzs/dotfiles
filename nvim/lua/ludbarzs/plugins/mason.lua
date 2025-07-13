@@ -19,13 +19,16 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				"pyright",
+				"ts_ls",
 			},
 		})
 
 		require("mason-tool-installer").setup({
 			ensure_installed = {
 				"stylua",
+				"prettier",
 				"ruff",
+				"eslint_d",
 			},
 		})
 	end,

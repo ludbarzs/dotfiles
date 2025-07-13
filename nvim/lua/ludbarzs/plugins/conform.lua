@@ -6,6 +6,9 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "ruff_format" },
+				typescript = { "prettier" },
+				typescriptreact = { "prettier" }, -- for .tsx
+				javascript = { "prettier" },
 			},
 		})
 		vim.api.nvim_create_autocmd("BufWritePre", {
