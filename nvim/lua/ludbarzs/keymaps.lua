@@ -8,7 +8,7 @@ vim.keymap.set("n", "gll", vim.diagnostic.open_float, { desc = "Show line diagno
 
 -- Yank error with gly
 vim.keymap.set("n", "gly", function()
-	local diagnostics = vim.diagnostic.get(0)
+	local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line(".") - 1 })
 	local message = ""
 	for _, value in pairs(diagnostics) do
 		message = message .. value.message
