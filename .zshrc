@@ -71,13 +71,12 @@ alias nb='NVIM_APPNAME=nvim.bak nvim'
 alias rm='trash-put'
 # Force remove (bypass trash)
 alias rmf='/bin/rm -i'
+# sudo pacman -S
+alias sps='sudo pacman -S'
 
 # Shell integrations
 # eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-
-# PATH
-export PATH="$HOME/bin:$PATH"
 
 # Start SSH agen
 
@@ -174,6 +173,7 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # PATH
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 export EDITOR="nvim"
 
 # Start SSH agen
