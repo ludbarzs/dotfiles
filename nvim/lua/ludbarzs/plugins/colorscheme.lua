@@ -6,7 +6,7 @@ return {
 			style = "deep",
 		})
 
-		-- vim.cmd("colorscheme onedark")
-		require("onedark").load()
+		vim.cmd("colorscheme onedark")
+		-- require("onedark").load()
 	end,
 }

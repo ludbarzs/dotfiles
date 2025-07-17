@@ -4,7 +4,7 @@
 vim.cmd("let g:netrw_liststyle = 3")
 
 -- Disabled for nvim tree (Default browswer)
-vim.g.loaded_netrw       = 1
+vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 local opt = vim.opt
@@ -46,4 +46,11 @@ opt.splitbelow = true
 -- Undo History
 opt.undofile = true
 
-
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+	callback = function()
+		vim.hl.on_yank()
+	end,
+})

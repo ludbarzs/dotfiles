@@ -10,6 +10,7 @@ return {
 				typescript = { "prettier" },
 				typescriptreact = { "prettier" }, -- for .tsx
 				javascript = { "prettier" },
+				php = { "pint" }, --    composer require --dev laravel/pint
 			},
 		})
 		vim.api.nvim_create_autocmd("BufWritePre", {
