@@ -25,16 +25,16 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # Set Key repeat
-exec --no-startup-id xset r rate 200 60
+exec_always --no-startup-id xset r rate 200 60
 
 ############
 ##Bindings##
 ############
 
 # Remap caps
-exec --no-startup-id setxkbmap -option caps:escape
+exec_always --no-startup-id setxkbmap -option caps:escape
 # Change keyboard language
-exec --no-startup-id "setxkbmap -layout us,lv -variant ,apostrophe -option grp:alt_shift_toggle"
+exec_always --no-startup-id "setxkbmap -layout us,lv -variant ,apostrophe -option grp:alt_shift_toggle"
 
 # Audio
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -189,20 +189,22 @@ exec --no-startup-id dex --autostart --environment i3
 # NetworkManager
 exec --no-startup-id nm-applet
 # Set up second monitor
-exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DP-4
+# exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DP-4
 
-exec --no-startup-id i3-msg "workspace $ws1; exec firefox, move workspace to output HDMI-0"
-exec --no-startup-id i3-msg "workspace $ws0; exec alacritty, move workspace to output DP-4"
-exec --no-startup-id i3-msg "workspace $ws2; exec alacritty, move workspace to output DP-4"
-exec --no-startup-id i3-msg "workspace $ws3; exec alacritty, move workspace to output DP-4"
-exec --no-startup-id i3-msg "workspace $ws4, move workspace to output DP-4"
-exec --no-startup-id i3-msg "workspace $ws5, move workspace to output DP-4"
-exec --no-startup-id i3-msg "workspace $ws6, move workspace to output DP-4"
-exec --no-startup-id i3-msg "workspace $ws7, move workspace to output DP-4"
-exec --no-startup-id i3-msg "workspace $ws8, move workspace to output DP-4"
-exec --no-startup-id i3-msg "workspace $ws8, move workspace to output DP-4"
-exec --no-startup-id i3-msg "workspace $ws9; exec alacritty --working-directory ~/Documents/neorg -e nvim guides/arch.norg, move workspace to output DP-4"
-exec --no-startup-id i3-msg "workspace $ws10; exec spotify-launcher, move workspace to output DP-4"
+exec --no-startup-id xrandr --output HDMI-0 --off
+
+exec --no-startup-id i3-msg "workspace $ws0; exec alacritty"
+exec --no-startup-id i3-msg "workspace $ws1; exec firefox"
+exec --no-startup-id i3-msg "workspace $ws2; exec alacritty"
+exec --no-startup-id i3-msg "workspace $ws3; exec alacritty"
+exec --no-startup-id i3-msg "workspace $ws4"
+exec --no-startup-id i3-msg "workspace $ws5"
+exec --no-startup-id i3-msg "workspace $ws6"
+exec --no-startup-id i3-msg "workspace $ws7"
+exec --no-startup-id i3-msg "workspace $ws8"
+exec --no-startup-id i3-msg "workspace $ws8"
+exec --no-startup-id i3-msg "workspace $ws9; exec alacritty --working-directory ~/Documents/neorg -e nvim guides/arch.norg"
+exec --no-startup-id i3-msg "workspace $ws10; exec spotify-launcher"
 
 assign [class="^Spotify$"] → 10
 assign [class="^firefox$"] → 1
