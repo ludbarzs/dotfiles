@@ -21,7 +21,6 @@ return {
 				"prettier",
 				"ruff",
 				"eslint_d",
-				"intelephense",
 			},
 		})
 	end,

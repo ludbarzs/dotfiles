@@ -4,7 +4,7 @@ return {
 	config = function()
 		require("conform").setup({
 			formatters_by_ft = {
-				markdown = { "markdownlint" },
+				markdown = { "prettier" },
 				lua = { "stylua" },
 				python = { "ruff_format" },
 				typescript = { "prettier" },
