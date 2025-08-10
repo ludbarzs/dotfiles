@@ -190,8 +190,10 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id nm-applet
 # Set up second monitor
 # exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DP-4
+# exec --no-startup-id xrandr --output HDMI-0 --off
 
-exec --no-startup-id xrandr --output HDMI-0 --off
+# picom
+exec_always --no-startup-id picom
 
 exec --no-startup-id i3-msg "workspace $ws0; exec alacritty"
 exec --no-startup-id i3-msg "workspace $ws1; exec firefox"
