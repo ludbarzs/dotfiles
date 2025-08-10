@@ -1,2 +1,2 @@
-# Sets caps to esc
+#!/bin/sh
 setxkbmap -option caps:escape
