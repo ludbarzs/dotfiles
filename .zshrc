@@ -39,8 +39,9 @@ zinit cdreplay -q
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 bindkey -M viins '^F' autosuggest-accept
-
 # History
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
@@ -67,12 +68,6 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias lo='libreoffice'
 alias nv='nvim'
-alias nb='NVIM_APPNAME=nvim.bak nvim'
-alias rm='trash-put'
-# Force remove (bypass trash)
-alias rmf='/bin/rm -i'
-# sudo pacman -S
-alias sps='sudo pacman -S'
 
 # Shell integrations
 # eval "$(fzf --zsh)"
