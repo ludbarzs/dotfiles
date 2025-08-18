@@ -12,7 +12,14 @@ return {
 		vim.lsp.enable("pyright")
 		vim.lsp.enable("denols")
 		vim.lsp.enable("ts_ls")
-		vim.lsp.enable("ts_ls")
+
+		require("lspconfig")["tinymist"].setup({
+			settings = {
+				formatterMode = "typstyle",
+				exportPdf = "onType",
+				semanticTokens = "disable",
+			},
+		})
 
 		vim.diagnostic.config({
 			virtual_text = true,
