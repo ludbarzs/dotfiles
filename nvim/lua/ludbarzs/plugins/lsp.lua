@@ -12,6 +12,8 @@ return {
 		vim.lsp.enable("pyright")
 		vim.lsp.enable("denols")
 		vim.lsp.enable("ts_ls")
+		vim.lsp.enable("html")
+		vim.lsp.enable("cssls")
 
 		require("lspconfig")["tinymist"].setup({
 			settings = {

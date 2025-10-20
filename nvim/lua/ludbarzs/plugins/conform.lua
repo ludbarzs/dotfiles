@@ -10,6 +10,8 @@ return {
 				typescript = { "prettier" },
 				typescriptreact = { "prettier" }, -- for .tsx
 				javascript = { "prettier" },
+				html = { "prettier" },
+				css = { "prettier" },
 				php = { "pint" }, --    composer require --dev laravel/pint
 			},
 		})

@@ -127,6 +127,7 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+set $ws11 "11"
 
 # switch to workspace
 bindsym $mod+grave workspace number $ws0
@@ -140,6 +141,7 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+bindsym $mod+n workspace number $ws11
 
 # move focused container to workspace
 bindsym $mod+Shift+grave move container to workspace number $ws0
@@ -153,6 +155,7 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+n move container to workspace number $ws11
 
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -198,7 +201,7 @@ exec_always --no-startup-id xrandr --output DP-2 --mode 1920x1080 --rate 144
 exec_always --no-startup-id picom
 
 exec --no-startup-id i3-msg "workspace $ws0; exec alacritty"
-exec --no-startup-id i3-msg "workspace $ws1; exec zen-browser"
+exec --no-startup-id i3-msg "workspace $ws1; exec firefox"
 exec --no-startup-id i3-msg "workspace $ws2; exec alacritty"
 exec --no-startup-id i3-msg "workspace $ws3; exec alacritty"
 exec --no-startup-id i3-msg "workspace $ws4"
@@ -207,18 +210,19 @@ exec --no-startup-id i3-msg "workspace $ws6"
 exec --no-startup-id i3-msg "workspace $ws7"
 exec --no-startup-id i3-msg "workspace $ws8"
 exec --no-startup-id i3-msg "workspace $ws8"
-exec --no-startup-id i3-msg "workspace $ws9; exec alacritty --working-directory ~/Documents/neorg -e nvim guides/arch.norg"
+exec --no-startup-id i3-msg "workspace $ws9"
 exec --no-startup-id i3-msg "workspace $ws10; exec spotify-launcher"
+exec --no-startup-id i3-msg "workspace $ws11; exec alacritty --working-directory ~/Documents/typst -e nvim refile.typ"
 
 assign [class="^Spotify$"] → 10
-assign [class="^zen-browser$"] → 1
+assign [class="^firefox$"] → 1
 
 ##############
 ##Appearance##
 ##############
 
 # Wallpaper
-exec_always feh --bg-scale /home/arg/Pictures/wallpaper_active.png
+exec_always feh --bg-scale /home/arg/Pictures/wallpaper_active.jpg
 
 # Gaps
 gaps inner 3
@@ -228,4 +232,4 @@ gaps bottom -3
 # Bar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-
+exec_always --no-startup-id ~/bin/battery_warn.sh
