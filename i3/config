@@ -212,7 +212,7 @@ exec --no-startup-id i3-msg "workspace $ws8"
 exec --no-startup-id i3-msg "workspace $ws8"
 exec --no-startup-id i3-msg "workspace $ws9"
 exec --no-startup-id i3-msg "workspace $ws10; exec spotify-launcher"
-exec --no-startup-id i3-msg "workspace $ws11; exec alacritty --working-directory ~/Documents/typst -e nvim refile.typ"
+exec --no-startup-id i3-msg "workspace $ws11; exec alacritty --working-directory ~/source-code/"
 
 assign [class="^Spotify$"] → 10
 assign [class="^firefox$"] → 1
@@ -222,7 +222,7 @@ assign [class="^firefox$"] → 1
 ##############
 
 # Wallpaper
-exec_always feh --bg-scale /home/arg/Pictures/wallpaper_active.jpg
+exec_always feh --bg-scale /home/arg/Pictures/botanical.jpg
 
 # Gaps
 gaps inner 3
@@ -233,3 +233,15 @@ gaps bottom -3
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 exec_always --no-startup-id ~/bin/battery_warn.sh
+
+
+# Low battery warning
+exec_always --no-startup-id \
+  bash -c 'while true; do \
+    lvl=$(cat /sys/class/power_supply/BAT0/capacity); \
+    stat=$(cat /sys/class/power_supply/BAT0/status); \
+    if [ "$lvl" -le 43 ] && [ "$stat" = "Discharging" ]; then \
+      notify-send -u critical "Battery low: $lvl%"; \
+    fi; \
+    sleep 60; \
+  done'

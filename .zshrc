@@ -83,3 +83,5 @@ if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi
 
+# Ruby path for vimgolf
+export PATH="$PATH:$HOME/.local/share/gem/ruby/3.4.0/bin"
