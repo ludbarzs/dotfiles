@@ -13,6 +13,11 @@ return {
 				html = { "prettier" },
 				css = { "prettier" },
 				php = { "pint" }, --    composer require --dev laravel/pint
+				svelte = { "prettier" }, --    composer require --dev laravel/pint
+				-- Run in project root:
+				-- npm i --save-dev prettier-plugin-svelte
+				-- Createa .prettierrc in project root, add:
+				-- {"plugins": ["prettier-plugin-svelte"]}
 			},
 		})
 		vim.api.nvim_create_autocmd("BufWritePre", {

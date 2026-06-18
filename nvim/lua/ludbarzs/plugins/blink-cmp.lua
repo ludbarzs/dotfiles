@@ -37,7 +37,7 @@ return {
 			per_filetype = {
 				jsx = { "eslint_d" },
 				js = { "eslint_d" },
-				ts = { "eslint_d" },
+				ts = { "ts_ls" },
 			},
 		},
 

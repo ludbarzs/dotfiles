@@ -14,14 +14,10 @@ return {
 		vim.lsp.enable("ts_ls")
 		vim.lsp.enable("html")
 		vim.lsp.enable("cssls")
-
-		require("lspconfig")["tinymist"].setup({
-			settings = {
-				formatterMode = "typstyle",
-				exportPdf = "onType",
-				semanticTokens = "disable",
-			},
-		})
+		vim.lsp.enable("rust_analyzer")
+		vim.lsp.enable("tinymist")
+		vim.lsp.enable("tinymist")
+		vim.lsp.enable("svelte")
 
 		vim.diagnostic.config({
 			virtual_text = true,
