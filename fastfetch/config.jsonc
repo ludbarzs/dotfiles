@@ -17,20 +17,20 @@
   "display": {
     "separator": "  ",
     "color": {
-      "keys": "38;2;157;82;50"
+      "keys": "38;2;210;88;70"
     },
     "key": { "width": 10 }
   },
   "modules": [
     "break",
-    { "type": "custom", "format": "\u001b[38;2;173;168;91m── system ──────────────" },
+    { "type": "custom", "format": "\u001b[38;2;159;163;156m── system ──────────────" },
     { "type": "os", "key": "  os", "format": "{pretty-name}" },
     { "type": "kernel", "key": "  kernel", "format": "{release}" },
     { "type": "uptime", "key": "  up" },
     { "type": "packages", "key": " 󰏖 pkgs", "format": "{all}" },
     { "type": "battery", "key": " 󰁹 bat", "format": "{capacity}% [{status}]" },
     "break",
-    { "type": "custom", "format": "\u001b[38;2;173;168;91m── rice ────────────────" },
+    { "type": "custom", "format": "\u001b[38;2;159;163;156m── rice ────────────────" },
     { "type": "wm", "key": "  wm", "format": "{pretty-name}" },
     { "type": "shell", "key": "  shell", "format": "{exe-name}" },
     { "type": "terminal", "key": "  term", "format": "{pretty-name}" },

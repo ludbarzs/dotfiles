@@ -1,0 +1,92 @@
+(defvar expanded false)
+(defvar volume-live 0)
+(defvar brightness-live 0)
+(defpoll bluetooth-status
+  :interval "5s"
+  :initial "off"
+  "bluetoothctl show | grep -q 'Powered: yes' && echo 'on' || echo 'off'")
+(defpoll bluetooth-device
+  :interval "5s"
+  :initial ""
+  "bluetoothctl info 2>/dev/null | grep 'Name:' | cut -d' ' -f2- || echo ''")
+(deflisten workspace
+  :initial "1"
+  "hyprctl activeworkspace -j | jq '.id' && socat -u UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | stdbuf -o0 grep -o 'workspace>>.*' | stdbuf -o0 sed 's/workspace>>//'")
+(defpoll clock
+  :interval "30s"
+  "date '+%H:%M'")
+(defpoll battery-pct
+  :interval "30s"
+  :initial "0"
+  "cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || cat /sys/class/power_supply/BAT1/capacity 2>/dev/null || echo '0'")
+(defpoll battery-status
+  :interval "30s"
+  :initial "Unknown"
+  "cat /sys/class/power_supply/BAT0/status 2>/dev/null || cat /sys/class/power_supply/BAT1/status 2>/dev/null || echo 'Unknown'")
+(defpoll volume
+  :interval "2s"
+  :initial "0"
+  "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{printf \"%d\", $2 * 100}'")
+(defpoll brightness
+  :interval "2s"
+  :initial "0"
+  "brightnessctl -m | awk -F, '{print substr($4, 1, length($4)-1)}'")
+(defpoll network
+  :interval "10s"
+  "nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d: -f2 | head -1 || echo 'offline'")
+(defwidget workspace-pill []
+  (box :class "ws-pill" :halign "start" :space-evenly false :spacing 4
+    (label :class "ws-label" :text "ws")
+    (label :class "ws-num" :text workspace)))
+(defwidget battery-pill []
+  (box :class "bat-pill" :halign "end" :space-evenly false :spacing 5
+    (label :class {"bat-icon " + (battery-pct > 50 ? "bat-good" : battery-pct > 20 ? "bat-mid" : "bat-low")}
+      :text {battery-status == "Charging" ? "󰂄" :
+             battery-pct > 80 ? "󰁹" :
+             battery-pct > 60 ? "󰂀" :
+             battery-pct > 40 ? "󰁿" :
+             battery-pct > 20 ? "󰁽" : "󰁺"})
+    (label :class "bat-pct" :text "${battery-pct}%")))
+(defwidget expanded-panel []
+  (revealer
+    :transition "none"
+    :reveal expanded
+    :duration "0ms"
+    (box :class "expanded-inner" :orientation "vertical" :space-evenly false :spacing 6
+      (box :class "divider")
+      (box :class "ctrl-row" :orientation "horizontal" :space-evenly false :spacing 12
+        (label :class "ctrl-icon" :text "󰕾")
+        (scale :class "ctrl-scale" :orientation "horizontal" :min 0 :max 101 :value volume
+          :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}% && eww update volume-live={}")
+        (label :class "ctrl-val" :text "${volume-live}")
+        (label :class "ctrl-icon" :text "󰃟")
+        (scale :class "ctrl-scale" :orientation "horizontal" :min 0 :max 99 :value brightness
+          :onchange "brightnessctl set {}% && eww update brightness-live={}")
+        (label :class "ctrl-val" :text "${brightness-live}"))
+      (button :class "net-row" :onclick "kitty -e nmtui &"
+        (box :orientation "horizontal" :space-evenly false :spacing 6
+          (label :class "ctrl-icon" :text "󰤨")
+          (label :class "net-ssid" :text network))))))
+(defwidget island []
+  (eventbox
+    :onhover "eww update expanded=true"
+    :onhoverlost "eww update expanded=false"
+    (box :class "island" :orientation "v" :space-evenly false
+      (box :class "island-main" :space-evenly false :hexpand true
+        (box :hexpand true :halign "start" (workspace-pill))
+        (box :hexpand true :halign "center" (label :class "clock" :text clock))
+        (box :hexpand true :halign "end" (battery-pill)))
+      (expanded-panel))))
+(defwindow bar
+  :monitor 0
+  :geometry (geometry
+    :x "0"
+    :y "0px"
+    :width "400px"
+    :height "0"
+    :anchor "bottom center")
+  :stacking "fg"
+  :exclusive false
+  :focusable false
+  :namespace "eww-bar"
+  (island))
