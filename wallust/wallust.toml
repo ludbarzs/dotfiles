@@ -1,5 +1,8 @@
 [templates]
-kitty = { src = "kitty-colors.tmpl", dst = "~/.cache/wallust/kitty-colors.conf" }
-hypr    = { src = "hypr-colors.lua.tmpl", dst = "~/.cache/wallust/hypr-colors.lua" }
-fastfetch = { src = "fastfetch.jsonc.tmpl", dst = "~/.config/fastfetch/config.jsonc" }
-eww = { src = "eww-colors.scss.tmpl", dst = "~/.cache/wallust/eww-colors.scss" }
+kitty      = { src = "kitty-colors.tmpl", dst = "~/.cache/wallust/kitty-colors.conf" }
+hypr       = { src = "hypr-colors.lua.tmpl", dst = "~/.cache/wallust/hypr-colors.lua" }
+fastfetch  = { src = "fastfetch.jsonc.tmpl", dst = "~/.config/fastfetch/config.jsonc" }
+eww        = { src = "eww-colors.scss.tmpl", dst = "~/.cache/wallust/eww-colors.scss" }
+quickshell_colors_loader = { src = "colors.qml.tmpl", dst = "~/.config/quickshell/capllet/wallust/colors.qml" }
+quickshell_colors_data   = { src = "colors.json.tmpl", dst = "~/.config/quickshell/capllet/wallust/colors.json" } #For colors to update dynamically
+quickshell_dir           = { src = "qmldir.tmpl", dst = "~/.config/quickshell/capllet/wallust/qmldir" }

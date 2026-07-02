@@ -1,0 +1,10 @@
+[config]
+contrast = 1.0
+
+[config.custom_colors]
+red = { color = "#ff5555", blend = false }
+green = { color = "#50fa7b", blend = false }
+
+[templates.kitty]
+input_path = '/home/arg/.config/matugen/templates/kitty-colors.conf.tmpl'
+output_path = '/home/arg/.cache/matugen/kitty-colors.conf'
