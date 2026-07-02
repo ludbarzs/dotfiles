@@ -21,6 +21,14 @@ return {
 				dotfiles = false,
 				git_ignored = false,
 			},
+			-- Changes cwd root when entering file, so telescope scope updates
+			sync_root_with_cwd = true,
+			actions = {
+				change_dir = {
+					enable = true,
+					global = true,
+				},
+			},
 		})
 		vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle Nvim Tree" })
 		vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh Nvim Tree" })

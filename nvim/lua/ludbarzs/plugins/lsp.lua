@@ -18,7 +18,16 @@ return {
 		-- vim.lsp.enable("tinymist")
 		-- vim.lsp.enable("tinymist")
 		-- vim.lsp.enable("svelte")
-		--
+
+		-- LSP for quickshell Mason had issues
+		-- yay -S qml-language-server-bin
+		vim.lsp.config("qml-language-server", {
+			cmd = { "qml-language-server" },
+			filetypes = { "qml" },
+			root_markers = { { "qmldir", "shell.qml" }, ".git" },
+		})
+		vim.lsp.enable("qml-language-server")
+
 		vim.diagnostic.config({
 			virtual_text = true,
 			signs = true,
