@@ -31,21 +31,21 @@ hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
 
 -- Worksapce on ~
 local key = "GRAVE"
-hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = 0 }))
-hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = 0 }))
+hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = 1 }))
+hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = 1 }))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 9 do
-	local key = i -- 10 maps to key 0
-	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+	local key = i
+	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = (i + 1) }))
+	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = (i + 1) }))
 end
 
 -- 0 goes to workspace 9
 local key = 0
-hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = 10 }))
-hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = 10 }))
+hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = 11 }))
+hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = 11 }))
 
 -- Example special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))

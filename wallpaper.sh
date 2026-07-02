@@ -18,7 +18,7 @@ hyprctl hyprpaper wallpaper ",$FULL_PATH"
 wallust run "$FULL_PATH"
 kill -SIGUSR1 $(pgrep kitty)
 # 4. Reload eww with new wallust colors
-eww kill
-eww open bar
-eww update volume-live=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{printf "%d", $2 * 100}')
-eww update brightness-live=$(brightnessctl -m | awk -F, '{print substr($4, 1, length($4)-1)}')
+# eww kill
+# eww open bar
+# eww update volume-live=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{printf "%d", $2 * 100}')
+# eww update brightness-live=$(brightnessctl -m | awk -F, '{print substr($4, 1, length($4)-1)}')
