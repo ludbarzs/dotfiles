@@ -1,6 +1,6 @@
 import QtQuick
 import Quickshell.Hyprland
-import "./wallust" as Theme
+import "./Singleton" as Theme
 
 Row {
   spacing: 4

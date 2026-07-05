@@ -1,6 +1,6 @@
 import QtQuick
 import Quickshell
-import "./wallust" as Theme
+import "./Singleton" as Theme
 
 Item {
   implicitWidth: label.implicitWidth

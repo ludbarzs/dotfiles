@@ -5,11 +5,13 @@ import Quickshell.Wayland
 import Quickshell.Hyprland
 import Quickshell.Services.UPower
 
-import "./wallust" as Theme
+import "./Singleton" as Theme
 
 Variants {
   model: Quickshell.screens;
+
   ShellRoot {
+
     function refresh() {
       Hyprland.refreshMonitors();
       Hyprland.refreshWorkspaces();
@@ -42,7 +44,15 @@ Variants {
         radius: 18
         height: bar.expanded ? 130 : 36
         width: bar.expanded ? 500 : 400
-        Behavior on height {
+        border {
+          color: Qt.rgba(Theme.Colors.foreground.r, Theme.Colors.foreground.g, Theme.Colors.foreground.b, 0.15)
+          width: 1
+        }
+        HoverHandler {
+          id: hoverHandler
+          onHoveredChanged: bar.expanded = hoverHandler.hovered
+        }
+                Behavior on height {
           NumberAnimation { 
             duration: 300
             easing.type: Easing.OutCubic
@@ -53,14 +63,6 @@ Variants {
             duration: 400
             easing.type: Easing.OutCubic
           }
-        }
-        border {
-          color: Qt.rgba(Theme.Colors.foreground.r, Theme.Colors.foreground.g, Theme.Colors.foreground.b, 0.15)
-          width: 1
-        }
-        HoverHandler {
-          id: hoverHandler
-          onHoveredChanged: bar.expanded = hoverHandler.hovered
         }
 
         // Row main bar

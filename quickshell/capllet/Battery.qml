@@ -1,6 +1,6 @@
 import QtQuick
 import Quickshell.Services.UPower
-import "./wallust" as Theme
+import "./Singleton" as Theme
 
 Row {
     spacing: 5

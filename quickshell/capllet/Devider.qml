@@ -1,5 +1,5 @@
 import QtQuick
-import "./wallust" as Theme
+import "./Singleton" as Theme
 Rectangle {
   id: divider
   anchors.top: idleRow.bottom

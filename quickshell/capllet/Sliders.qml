@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
-import "./wallust" as Theme
+import "./Singleton" as Theme
 import Quickshell.Services.Pipewire
 
 RowLayout {
