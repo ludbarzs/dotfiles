@@ -1,6 +1,10 @@
-# My i3 Dotfiles
+# Hyprland dotfiles
 
 Dotflies by [ludbarzs](https://github.com/ludbarzs)
+
+# Description
+
+...
 
 # Installation
 
@@ -14,13 +18,21 @@ Autmatic installation can be done with the install.sh script (For Arch Linux)
 - Safely handles existing configurations with backup options
 
 1. Clone this repository:
+   > [!IMPORTANT]
+   > This repository should be cloned to `$HOME/source-code`.
 
 ```bash
-git clone --branch i3-t440 --single-branch https://github.com/ludbarzs/dotfiles.git
+git clone https://github.com/ludbarzs/dotfiles.git
 cd dotflies
 ```
 
-2. Run the install script
+1.5 Run the link-config.sh script to link you config to mine (_will delete you current config!_)
+
+```bash
+bash link-config.sh
+```
+
+2. Run the install script (Currently not working)
 
 ```bash
 bash install.sh

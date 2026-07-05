@@ -9,7 +9,7 @@
 --
 hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprpaper")
-	hl.exec_cmd("wallust run Pictures/fire.jpg")
+	hl.exec_cmd("wallust run .config/Pictures/fire.jpg")
 	hl.exec_cmd([[sh -c "qs --path ~/.config/quickshell/capllet/shell.qml"]])
 
 	hl.exec_cmd("[workspace 1 silent] kitty -e zsh -c 'nvim ~/source-code/dotfiles/; exec zsh'")
