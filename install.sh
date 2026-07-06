@@ -92,4 +92,41 @@ else
   fi
 fi
 
+# --- 6. Create swap file ---
+if confirm "Set up a swap file?"; then
+  SWAP_FILE="/swapfile"
+
+  if [ -f "$SWAP_FILE" ]; then
+    echo "Swap file already exists at $SWAP_FILE, skipping."
+  else
+    read -rp "Choose swap size - 10 or 20 (GB): " swap_choice
+    case "$swap_choice" in
+      10) SWAP_SIZE="10G" ;;
+      20) SWAP_SIZE="20G" ;;
+      *)
+        echo "Invalid choice, skipping swap file creation."
+        SWAP_SIZE=""
+        ;;
+    esac
+
+    if [ -n "$SWAP_SIZE" ]; then
+      sudo fallocate -l "$SWAP_SIZE" "$SWAP_FILE"
+      sudo chmod 600 "$SWAP_FILE"
+      sudo mkswap "$SWAP_FILE"
+      sudo swapon "$SWAP_FILE"
+
+      if ! grep -q "^$SWAP_FILE " /etc/fstab; then
+        echo "$SWAP_FILE none swap defaults 0 0" | sudo tee -a /etc/fstab >/dev/null
+      fi
+
+      echo "Swap file of $SWAP_SIZE created and enabled."
+    fi
+  fi
+else
+  echo "Skipping swap file creation."
+fi
+
 echo "Done."
+
+
+
