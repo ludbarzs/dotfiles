@@ -22,19 +22,19 @@ Variants {
     }
 
     PanelWindow {
+      id: bar
       property bool expanded: false
+
       WlrLayershell.layer: WlrLayer.Overlay
       exclusiveZone: 0
-      id: bar
       anchors {
         bottom: true
       }
       margins.top: 0
       margins.bottom: 0
-      implicitHeight: 130 //36
+      implicitHeight: 36 //36
       implicitWidth: 500
       color: "transparent"
-
 
       Rectangle {
         // Styling for capplet
@@ -42,8 +42,10 @@ Variants {
         anchors.horizontalCenter: parent.horizontalCenter
         color: Qt.rgba(Theme.Colors.background.r, Theme.Colors.background.g, Theme.Colors.background.b, 0.82)
         radius: 18
-        height: bar.expanded ? 130 : 36
-        width: bar.expanded ? 500 : 400
+
+        height: 36
+        width: 400
+
         border {
           color: Qt.rgba(Theme.Colors.foreground.r, Theme.Colors.foreground.g, Theme.Colors.foreground.b, 0.15)
           width: 1
@@ -52,7 +54,7 @@ Variants {
           id: hoverHandler
           onHoveredChanged: bar.expanded = hoverHandler.hovered
         }
-                Behavior on height {
+        Behavior on height {
           NumberAnimation { 
             duration: 300
             easing.type: Easing.OutCubic

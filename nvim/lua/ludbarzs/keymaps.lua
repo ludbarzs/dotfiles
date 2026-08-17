@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
-vim.keymap.set("n", "<leader>fa", "ggVG=", { desc = "Format file with treesitter" })
+vim.keymap.set("n", "<leader>fa", "ggVG=<C-o>", { desc = "Format file with treesitter" })
 
 -- Diagnostics
 vim.keymap.set("n", "gll", vim.diagnostic.open_float, { desc = "Show line diagnostics" })

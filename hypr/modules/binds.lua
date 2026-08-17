@@ -21,6 +21,13 @@ hl.bind(mainMod .. " + E", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + U", hl.dsp.exec_cmd("systemctl hibernate"))
 
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
+hl.bind(mainMod .. " + SHIFT + P", function()
+	hl.dsp.exec_cmd(
+		"hyprctl monitors | grep -q 'eDP-1' && "
+			.. "hyprctl eval 'hl.config({ monitor = { { output = \"eDP-1\", disabled = true } } })' || "
+			.. "hyprctl eval 'hl.config({ monitor = { { output = \"eDP-1\", disabled = false } } })'"
+	)
+end)
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("bash ~/wallpaper.sh"))
 
 -- Move focus with mainMod + hjkl keys (Vim-style window navigation)
